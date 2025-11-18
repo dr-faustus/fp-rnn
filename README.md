@@ -4,6 +4,11 @@ This code accompanies the paper:\
 \[[NeurIPS'2025](https://neurips.cc/)\] \[[Fixed-Point RNNs: Interpolating from Diagonal to Dense](https://arxiv.org/abs/2503.10799)\]\
 Sajad Movahedi, Felix Sarnthein, Nicola Muca Cirone, Antonio Orvieto
 
+Linear recurrent neural networks (RNNs) and state-space models (SSMs) such as Mamba have become promising alternatives to softmax-attention as sequence mixing layers in Transformer architectures. Current models, however, do not exhibit the full state-tracking expressivity of RNNs because they rely on channel-wise (i.e. diagonal) sequence mixing. 
+In this paper, we investigate parameterizations of a large class of dense linear RNNs as fixed-points of parallelizable diagonal linear RNNs.
+The resulting models can naturally trade expressivity for efficiency at a fixed number of parameters
+and achieve state-of-the-art results on the state-tracking benchmarks $A_5$ and $S_5$, while matching performance on copying and other tasks.
+
 ![](fp-overview_v4.png)
 
 ---
