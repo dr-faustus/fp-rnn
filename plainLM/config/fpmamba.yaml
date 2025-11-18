@@ -1,0 +1,85 @@
+## CONFIG file
+## change paths with your own!
+
+deterministic: False
+seed: 100
+
+trainset_path: "/fast/smovahedi/data/lm/fineweb/fineweb_pretrain_2B_tokens/train"
+vocab_size: 50257
+seq_len: 2048
+sampler: 'sequential'
+sampler_seed: null
+num_workers: 4
+
+eval: True
+validset_path: "/fast/smovahedi/data/lm/fineweb/fineweb_pretrain_2B_tokens/valid"
+eval_every_steps: 10
+
+model: 'FPMamba1'
+d_model: 768
+d_state: 16
+d_mixer: 768
+mixer_rank: 2
+mixer_type: 'householderproduct'
+mixer_proj_rank: -1
+mixer_h_dep: True
+symm_mixer: False
+use_short_conv: True
+glu_in_loop: True
+bc_norm: False
+n_backwards: 1
+max_iter: 100
+layer_norm_eps: 1e-5
+mlp_class: 'glu'
+expand: '8/3'
+n_layers: 12
+rms_norm: True
+tie_embeddings: False
+torch_compile: False
+
+# note: step budget=token_budget/(seq_len * micro_batch_size * grad_accumulation_steps)
+steps_budget: 4800
+
+# note: this is micro batch size if grad_accumulation_steps>1
+# note: with ddp, effective batch size = batch_size * grad_accumulation_steps * ddp_world_size
+micro_batch_size: 16
+grad_accumulation_steps: 4
+
+# note: choose between {float32, float16, bfloat16}
+# note: float16 data type will automatically use a GradScaler
+dtype: 'bfloat16'
+
+optim: 'adamw'
+fused_optim: True 
+lr: 0.004
+weight_decay: 0.1
+beta1: 0.9
+beta2: 0.95
+grad_clip: 1.0
+
+scheduler: 'warmup_cosine'
+warmup_steps: 0.1
+cooldown_steps: null
+lr_start: 0.0
+lr_end: 1.e-5
+lr_end_pct: null
+
+log_every_steps: 20
+print_progress: True
+
+use_wandb: True
+wandb_project: 'llm'
+wandb_dir: '/fast/smovahedi/logs/llm/'
+wandb_run_name: 'fpmamba1-kronecker'
+exp_name: 'fpmamba1-kronecker'
+out_dir: '/fast/smovahedi/exp/llm'
+over_write: True
+
+resume: False
+resume_micro_step: null
+resume_exp_name: null
+
+save_last_checkpoint: True
+save_intermediate_checkpoints: False
+save_every_steps: null
+

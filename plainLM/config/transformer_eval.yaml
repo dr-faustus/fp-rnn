@@ -1,0 +1,55 @@
+beta1: 0.9
+beta2: 0.95
+cooldown_steps: null
+d_model: 1024
+deterministic: false
+dtype: float32
+eval_every_steps: 10
+exp_name: transformer
+expand: 8/3
+fused_optim: true
+grad_accumulation_steps: 2
+grad_clip: 1.0
+log_every_steps: 20
+lr: 0.002
+lr_end: 1.0e-05
+lr_end_pct: null
+lr_start: 0.0
+micro_batch_size: 16
+mlp_class: glu
+model: transformer
+n_heads: 16
+n_layers: 9
+num_workers: 4
+optim: adamw
+out_dir: /fast/fsarnthein/exp/plainLM
+print_progress: true
+sampler: sequential
+sampler_seed: null
+scheduler: warmup_cosine
+seed: 100
+seq_len: 2048
+steps_budget: 4800
+tie_embeddings: false
+torch_compile: false
+trainset_path: /fast/smovahedi/data/lm/fineweb/fineweb_pretrain_2B_tokens/train
+vocab_size: 50257
+wandb_dir: /fast/fsarnthein/logs/plainLM/wandb
+wandb_project: llm
+wandb_run_name: transformer
+warmup_steps: 0.1
+weight_decay: 0.1
+
+
+use_wandb: false
+over_write: False
+eval: True
+validset_path: "/fast/fsarnthein/data/lm/codeparrot/codeparrot_valid_16392ctx/train"
+resume: True
+resume_exp_name: transformer/job_idx_1/
+resume_micro_step: null
+valid_seqlens: [2048, 4096, 6144, 8196, 10240, 12288, 14336, 16392]
+
+save_every_steps: null
+save_intermediate_checkpoints: False
+save_last_checkpoint: False
