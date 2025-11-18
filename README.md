@@ -4,7 +4,7 @@ This code accompanies the paper:\
 \[[NeurIPS'2025](https://neurips.cc/)\] \[[Fixed-Point RNNs: Interpolating from Diagonal to Dense](https://arxiv.org/abs/2503.10799)\]\
 Sajad Movahedi, Felix Sarnthein, Nicola Muca Cirone, Antonio Orvieto
 
-![](fp-overview_v4.pdf)
+![](fp-overview_v4.png)
 
 ---
 
