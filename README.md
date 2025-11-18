@@ -33,8 +33,9 @@ pip install causal-conv1d
 - Copying: `bash run_copy_exp.sh`
 - Word problems: `bash run_word_problem_exp.sh`
 - Arithmetic: `bash run_arithmetic_exp.sh`
+- Language Modeling: `cd plainLM && python train.py --config=./config/fpmamba.yaml`
 
-Adjust script flags as needed (see the paper for details).
+Adjust script flags and config files as needed (see the paper for details).
 
 ---
 
