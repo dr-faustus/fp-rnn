@@ -106,7 +106,10 @@ class TorchEngine(torch.nn.Module):
     # forward pass with autocasting
     with self.ctx:
       output = self.model(inputs)
-      logits = getattr(output, 'logits', output)
+      if not torch.is_tensor(output):
+        logits = output[0]
+      else:
+        logits = output
       loss = self.criterion(logits.view(-1, logits.size(-1)), targets.view(-1))
       loss = loss / self.accumulation_steps
 
@@ -155,8 +158,12 @@ class TorchEngine(torch.nn.Module):
       inputs, targets = _move_to_device(batch, self.seq_len, self.device)
       with self.ctx:
         output = self.model(inputs)
-        logits = getattr(output, 'logits', output)
-        loss = self.criterion(logits.view(-1, logits.size(-1)), targets.view(-1))
+      if not torch.is_tensor(output):
+        logits = output[0]
+      else:
+        logits = output
+
+      loss = self.criterion(logits.view(-1, logits.size(-1)), targets.view(-1))
     
       if torch.isnan(loss) or loss is None:
         raise ValueError("Validation loss is nan")

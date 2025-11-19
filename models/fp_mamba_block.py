@@ -167,7 +167,7 @@ class FPMamba(nn.Module):
             raise ValueError(
                 "The mixer needs to be householder product, dplr, or non selective."
             )
-        self.mixer = torch.compile(self.mixer, fullgraph=True)
+        # self.mixer = torch.compile(self.mixer, fullgraph=True)
 
         # fixed-point optimizer
         self.optimizer = FixedPointOptimizer(
@@ -213,7 +213,7 @@ class FPMamba(nn.Module):
     def _fixed_point_iter(self, x, dt, A, B, C, z, ssm_state=None):
         state = self.optimizer.start(torch.zeros_like(x))
 
-        @torch.compile(fullgraph=True)
+        # @torch.compile(fullgraph=True)
         def step(state:Dict[str, torch.Tensor]):
             y = self._fixed_point_step(x, state['y'], dt, A, B, C, z, ssm_state=ssm_state)
             return self.optimizer.step(state, y)

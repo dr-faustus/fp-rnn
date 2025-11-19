@@ -30,6 +30,7 @@ pip install causal-conv1d
 
 ## Running
 
+- CatbAbI QA: download and preprocess with `bash catbAbI_exp/download_and_preprocess.sh`, then launch experiments via `bash run_catbabi.sh`.
 - Copying: `bash run_copy_exp.sh`
 - Word problems: `bash run_word_problem_exp.sh`
 - Arithmetic: `bash run_arithmetic_exp.sh`
@@ -41,10 +42,11 @@ Adjust script flags and config files as needed (see the paper for details).
 
 ## Credits
 
+- CatbAbI task adapted from https://github.com/ischlag/Fast-Weight-Memory-public
+- Copy task adapted from https://github.com/sjelassi/transformers_ssm_copy
+- Word problem tasks adapted from https://github.com/jopetty/word-problem
+- Arithmetic tasks adapted from https://github.com/automl/DeltaProduct
 - Language modeling pipeline adapted from https://github.com/Niccolo-Ajroldi/plainLM  
-- Arithmetic tasks adapted from https://github.com/automl/DeltaProduct  
-- Word problem tasks adapted from https://github.com/jopetty/word-problem  
-- Copy task adapted from https://github.com/sjelassi/transformers_ssm_copy  
 
 ---
 

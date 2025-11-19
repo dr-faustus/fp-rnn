@@ -22,3 +22,5 @@ node_modules
 **/runs*
 **/tmp*
 **/old_formulation_logs*
+**/logs
+**/catbAbI_exp/data
